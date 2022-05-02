@@ -26,7 +26,7 @@ def main():
     #*****************************************************************
     jumpTable = {}
     jumpTable['1'] = smileyFunction       # Smiley - call to function goes here
-    jumpTable['2'] = stub                 # Alvarez - call to function goes here
+    jumpTable['2'] = alvarezFunction      # Alvarez - call to function goes here
     jumpTable['3'] = stub                 # Appiah - call to function goes here
     jumpTable['4'] = stub                 # Balderas - call to function goes here
     jumpTable['5'] = stub                 # Butler - call to function goes here
@@ -117,6 +117,31 @@ def stub():
     print("Press ENTER to continue.")
     input()    
 
+# *****************************************************************************************
+# FUNCTION:         alvarezFunction
+# DESCRIPTION:      gets file from http://www.smileyed.org/data.csv and prints summary of data converted to dataframe
+# *****************************************************************************************
+def alvarezFunction():
+    import numpy as np
+    import pandas as pd
+    import requests
+    print()
+    print()
+    
+    url = 'http://www.smileyed.org/data.csv'
+    
+    r = requests.get(url, allow_redirects=True)
+    
+    open('data.csv', 'wb').write(r.content)
+    
+    a = pd.read_csv ("data.csv")
+    
+    print("Summary of a file downloaded from http://www.smileyed.org/data.csv and converted to a dataframe:\n", end = '\n')
+    
+    print(a.info(),end = '\n\n')
+    
+    print("Press ENTER to continue.")
+    input()    
 # *****************************************************************************************
 # FUNCTION:         smileyFunction
 # DESCRIPTION:      calls SmileyFib with a parameter of 11
